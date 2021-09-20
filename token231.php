@@ -1,5 +1,5 @@
 <?php
-function get_token($username, $password)
+function get_token($username, $password, $deviceId)
 {
     $url = "https://ebank.tpb.vn/gateway/api/auth/login";
     $curl = curl_init($url);
@@ -8,7 +8,7 @@ function get_token($username, $password)
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
     $headers = array(
-        "DEVICE_ID: LYjkjqGZ3HhGP5520GxPP2j94RDMC7Xje77MI7" . rand(10000000.999999999999),
+        "DEVICE_ID: $deviceId",
         "PLATFORM_VERSION: 91",
         "DEVICE_NAME: Chrome",
         "SOURCE_APP: HYDRO",
@@ -34,4 +34,14 @@ function get_token($username, $password)
     $resp = curl_exec($curl);
     curl_close($curl);
     return $resp;
+}
+
+function generateRandomString($length = 10) {
+  $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $charactersLength = strlen($characters);
+  $randomString = '';
+  for ($i = 0; $i < $length; $i++) {
+      $randomString .= $characters[rand(0, $charactersLength - 1)];
+  }
+  return $randomString;
 }

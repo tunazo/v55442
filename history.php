@@ -1,7 +1,7 @@
 <?php
-$ngay_bat_dau_check = '20210627';
-$ngay_ket_thuc_check = '20210727';
-function get_history($token, $stk_tpbank)
+$ngay_bat_dau_check = '20210801';
+$ngay_ket_thuc_check = '20210901';
+function get_history($token, $stk_tpbank, $deviceId)
 {
     $url = "https://ebank.tpb.vn/gateway/api/smart-search-presentation-service/v1/account-transactions/find";
 
@@ -12,12 +12,12 @@ function get_history($token, $stk_tpbank)
 
     $headers = array(
         "Connection: keep-alive",
-        "DEVICE_ID: LYjkjqGZ3HhGP5520GxPP2j94RDMC7Xje77MI75RYBVR",
+        "DEVICE_ID: $deviceId",
         "PLATFORM_VERSION: 91",
         "DEVICE_NAME: Chrome",
         "SOURCE_APP: HYDRO",
         "Authorization: Bearer " . $token,
-        "XSRF-TOKEN=3229191c-b7ce-4772-ab93-55a",
+        "XSRF-TOKEN=812413c-b7ae-5674-tb97-22o",
         "Content-Type: application/json",
         "Accept: application/json, text/plain, */*",
         "sec-ch-ua-mobile: ?0",
